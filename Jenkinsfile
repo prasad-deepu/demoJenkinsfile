@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo " job name is ${env.JOBA_NAME}"
+                echo " job name is ${env.JOB_NAME}"
             }
         }
         stage("Using curl example") {
