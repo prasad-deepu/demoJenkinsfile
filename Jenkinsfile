@@ -34,7 +34,8 @@ return resp
 
 def foldercurlmethod(String url ,String JFROG_ID) {
     List lt = []
-    lt = sh(script: "curl -u $JFROG_ID -s $url | grep uri | awk '{ print \$3 }'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g'", returnStdout: true).trim()
+    lt = sh(script: "arr=$(curl -u $JFROG_ID -s $url | grep uri | awk '{ print \$3 }'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g') \
+            $arr", returnStdout: true).trim()
     
     return lt
 }
