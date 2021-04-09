@@ -16,7 +16,8 @@ environment {
 
                    
 
-                  print(curlmethod(url,JFROG_ID))
+                  //print(curlmethod(url,JFROG_ID))
+                      print(foldercurlmethod(url,JFROG_ID))
                 }
             }
         }
@@ -29,4 +30,11 @@ String resp = sh(script: "curl -u $JFROG_ID -s $url | grep uri | awk '{ print \$
 
 return resp
 
+}
+
+def foldercurlmethod(String url ,String JFROG_ID) {
+    List lt = []
+    lt = sh(script: "curl -u $JFROG_ID -s $url | grep uri | awk '{ print $3 }'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g'", returnStdout: true).trim()
+    
+    return lt
 }
