@@ -7,7 +7,7 @@ environment {
     url = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local/?sort"
     folder_path = curlmethod(url,JFROG_ID,buildnum)
     Path = "${url}/${folder_path}/?sort"
-    image_name = curlmethodnew(Path, JFROG_ID)
+   // image_name = curlmethodnew(Path, JFROG_ID)
       }
      parameters {
         string( defaultValue: "",name: 'buildnum')
@@ -25,8 +25,8 @@ environment {
 
                    
 
-                  print(image_name)
-                      //print(foldcurlmethod(url,JFROG_ID,bn))
+                  //print(image_name)
+                   print(Path)
                 }
             }
         }
