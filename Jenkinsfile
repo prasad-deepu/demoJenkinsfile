@@ -2,6 +2,7 @@ pipeline {
     agent any
 environment {
         JFROG_ID = credentials('jfrogid')
+        bn = "${BUILD_NUMBER}"
       }
     stages {
         stage('Hello') {
@@ -17,7 +18,7 @@ environment {
                    
 
                   //print(curlmethod(url,JFROG_ID))
-                      print(foldercurlmethod(url,JFROG_ID))
+                      print(foldercurlmethod(url,JFROG_ID,bn))
                 }
             }
         }
@@ -32,10 +33,14 @@ return resp
 
 }
 
-def foldercurlmethod(String url ,String JFROG_ID) {
-    ArrayList<String[][]> lt = new ArrayList<>()
-    //lt = sh(script: "curl -u $JFROG_ID -s $url | grep uri | awk '{ print \$3 }'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g'", returnStdout: true).trim()
-    lt = sh(script: "curl -u $JFROG_ID -s $url | jq -r '.children[].uri' | sed 's+\"++g' | sed 's+/++g' | sed 's+,++g'", returnStdout: true).trim()
+def foldercurlmethod(String url ,String JFROG_ID, int bn) {
     
+    //lt = sh(script: "curl -u $JFROG_ID -s $url | grep uri | awk '{ print \$3 }'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g'", returnStdout: true).trim()
+    //lt = sh(script: "curl -u $JFROG_ID -s $url | jq -r '.children[].uri' | sed 's+\"++g' | sed 's+/++g' | sed 's+,++g'", returnStdout: true).trim()
+    if(bn > 1){
+        lt = sh(script: "curl -u $JFROG_ID -s $url | grep uri |awk '{print \$3}'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' | head -$bn | tail -1", returnStdout: true).trim();
+    }else{
+        lt = sh(script: "curl -u $JFROG_ID -s $url | grep uri |awk '{print \$3}'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' | head -$bn", returnStdout: true).trim();
+    }
     return lt
 }
