@@ -2,7 +2,7 @@ pipeline {
     agent any
 environment {
         JFROG_ID = credentials('jfrogid')
-        bn = "${BUILD_NUMBER}"
+       // bn = "${BUILD_NUMBER}"
       }
     stages {
         stage('Hello') {
@@ -17,7 +17,7 @@ environment {
 
                    
 
-                  print(curlmethod(url,JFROG_ID,bn))
+                  print(curlmethod(url,JFROG_ID,buildnum))
                       //print(foldcurlmethod(url,JFROG_ID,bn))
                 }
             }
@@ -25,7 +25,7 @@ environment {
     }
 }
 
-def curlmethod(String url, String JFROG_ID,bn ) {
+def curlmethod(String url, String JFROG_ID,int bn ) {
 
 //String resp = sh(script: "curl -u $JFROG_ID -s $url | grep uri | awk '{ print \$3 }' | sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' | head -1", returnStdout: true).trim()
 
