@@ -4,6 +4,9 @@ environment {
         JFROG_ID = credentials('jfrogid')
        // bn = "${BUILD_NUMBER}"
       }
+     parameters {
+        string( name: 'buildnum')
+    }
     stages {
         stage('Hello') {
             steps {
