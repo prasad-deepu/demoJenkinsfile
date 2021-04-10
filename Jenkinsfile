@@ -17,8 +17,8 @@ environment {
 
                    
 
-                  //print(curlmethod(url,JFROG_ID))
-                      print(foldcurlmethod(url,JFROG_ID,bn))
+                  print(curlmethod(url,JFROG_ID))
+                      //print(foldcurlmethod(url,JFROG_ID,bn))
                 }
             }
         }
