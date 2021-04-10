@@ -25,7 +25,7 @@ environment {
 
                    
 
-                  print(image_name)
+                  print("the folder path is:"+' '+folder_path+" and image is: "+image_name)
                    //print(Path)
                 }
             }
