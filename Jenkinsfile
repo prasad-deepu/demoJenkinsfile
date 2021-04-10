@@ -42,5 +42,6 @@ def foldercurlmethod(String url ,String JFROG_ID, int bn) {
     }else{
         lt = sh(script: "curl -u $JFROG_ID -s $url | grep uri |awk '{print \$3}'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' | head -$bn", returnStdout: true).trim();
     }
+    
     return lt
 }
