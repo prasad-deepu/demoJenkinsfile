@@ -17,21 +17,21 @@ environment {
 
                    
 
-                  print(curlmethod(url,JFROG_ID))
-                      //print(foldcurlmethod(url,JFROG_ID,bn))
+                  //print(curlmethod(url,JFROG_ID))
+                      print(foldcurlmethod(url,JFROG_ID,bn))
                 }
             }
         }
     }
 }
 
-def curlmethod(String url, String JFROG_ID ) {
+//def curlmethod(String url, String JFROG_ID ) {
 
-String resp = sh(script: "curl -u $JFROG_ID -s $url | grep uri | awk '{ print \$3 }' | sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' | head -1", returnStdout: true).trim()
+//String resp = sh(script: "curl -u $JFROG_ID -s $url | grep uri | awk '{ print \$3 }' | sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' | head -1", returnStdout: true).trim()
 
-return resp
+//return resp
 
-}
+//}
 
 def foldcurlmethod(String url ,String JFROG_ID, int bn) {
     
