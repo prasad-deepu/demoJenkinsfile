@@ -3,11 +3,11 @@ pipeline {
     agent any
 environment {
         JFROG_ID = credentials('jfrogid')
-       // bn = "${BUILD_NUMBER}"
+       bn = "${BUILD_NUMBER}"
       }
-     parameters {
-        string( defaultValue: "1",name: 'buildnum')
-    }
+     //parameters {
+        //string( defaultValue: "1",name: 'buildnum')
+   // }
     stages {
         stage('Hello') {
             steps {
@@ -21,7 +21,7 @@ environment {
 
                    
 
-                  print(curlmethod(url,JFROG_ID,buildnum))
+                  print(curlmethod(url,JFROG_ID,bn))
                       //print(foldcurlmethod(url,JFROG_ID,bn))
                 }
             }
