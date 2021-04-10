@@ -3,13 +3,13 @@ pipeline {
     agent any
 environment {
         JFROG_ID = credentials('jfrogid')
-       bn = "${BUILD_NUMBER}"
+       //bn = "${BUILD_NUMBER}"
     url = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local/?sort"
-    Path = curlmethod(url,JFROG_ID,bn)
+    Path = curlmethod(url,JFROG_ID,buildnum)
       }
-     //parameters {
-        //string( defaultValue: "1",name: 'buildnum')
-   // }
+     parameters {
+        string( defaultValue: "",name: 'buildnum')
+    }
     stages {
         stage('Hello') {
             steps {
