@@ -17,27 +17,20 @@ environment {
 
                    
 
-                  //print(curlmethod(url,JFROG_ID))
-                      print(foldcurlmethod(url,JFROG_ID,bn))
+                  print(curlmethod(url,JFROG_ID,bn))
+                      //print(foldcurlmethod(url,JFROG_ID,bn))
                 }
             }
         }
     }
 }
 
-//def curlmethod(String url, String JFROG_ID ) {
+def curlmethod(String url, String JFROG_ID,bn ) {
 
 //String resp = sh(script: "curl -u $JFROG_ID -s $url | grep uri | awk '{ print \$3 }' | sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' | head -1", returnStdout: true).trim()
 
 //return resp
-
-//}
-
-def foldcurlmethod(String url ,String JFROG_ID, int bn) {
-    
-    //lt = sh(script: "curl -u $JFROG_ID -s $url | grep uri | awk '{ print \$3 }'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g'", returnStdout: true).trim()
-    //lt = sh(script: "curl -u $JFROG_ID -s $url | jq -r '.children[].uri' | sed 's+\"++g' | sed 's+/++g' | sed 's+,++g'", returnStdout: true).trim()
-    String lt
+ String lt
     if(bn > 1){
         lt = sh(script: "curl -u $JFROG_ID -s $url | grep uri |awk '{print \$3}'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' | head -$bn | tail -1", returnStdout: true).trim();
     }else{
@@ -45,4 +38,6 @@ def foldcurlmethod(String url ,String JFROG_ID, int bn) {
     }
     
     return lt
+
 }
+
