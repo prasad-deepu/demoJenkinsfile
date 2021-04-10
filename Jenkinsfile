@@ -5,7 +5,9 @@ environment {
         JFROG_ID = credentials('jfrogid')
        //bn = "${BUILD_NUMBER}"
     url = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local/?sort"
-    Path = curlmethod(url,JFROG_ID,buildnum)
+    folder_path = curlmethod(url,JFROG_ID,buildnum)
+    Path = "${url}/${folder_path}/?sort"
+    image_name = curlmethodnew(Path, JFROG_ID)
       }
      parameters {
         string( defaultValue: "",name: 'buildnum')
@@ -23,7 +25,7 @@ environment {
 
                    
 
-                  print(Path)
+                  print(image_name)
                       //print(foldcurlmethod(url,JFROG_ID,bn))
                 }
             }
@@ -31,19 +33,11 @@ environment {
     }
 }
 
-//def curlmethod(String url, String JFROG_ID,int bn ) {
+def curlmethodnew(String Path, String JFROG_ID ) {
 
-//String resp = sh(script: "curl -u $JFROG_ID -s $url | grep uri | awk '{ print \$3 }' | sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' | head -1", returnStdout: true).trim()
+String resp = sh(script: "curl -u $JFROG_ID -s $url | jq -r ".children[].uri" | sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' | sort -V | tail -1", returnStdout: true).trim()
 
-//return resp
- //String lt
-   // if(bn > 1){
-     //   lt = sh(script: "curl -u $JFROG_ID -s $url | grep uri |awk '{print \$3}'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' | head -$bn | tail -1", returnStdout: true).trim();
-    //}else{
-      //  lt = sh(script: "curl -u $JFROG_ID -s $url | grep uri |awk '{print \$3}'| sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' | head -$bn", returnStdout: true).trim();
-    //}
-    
-    //return lt
-
-//}
+return resp
+ 
+}
 
