@@ -4,6 +4,8 @@ pipeline {
 environment {
         JFROG_ID = credentials('jfrogid')
        bn = "${BUILD_NUMBER}"
+    url = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local/?sort"
+    Path = curlmethod(url,JFROG_ID,bn)
       }
      //parameters {
         //string( defaultValue: "1",name: 'buildnum')
@@ -17,11 +19,11 @@ environment {
         stage("Using curl example") {
             steps {
                 script {
-                    final String url = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local/?sort"
+                    //final String url = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local/?sort"
 
                    
 
-                  print(curlmethod(url,JFROG_ID,bn))
+                  print(Path)
                       //print(foldcurlmethod(url,JFROG_ID,bn))
                 }
             }
