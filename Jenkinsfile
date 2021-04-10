@@ -6,7 +6,7 @@ environment {
        // bn = "${BUILD_NUMBER}"
       }
      parameters {
-        string( name: 'buildnum')
+        string( defaultValue: "1",name: 'buildnum')
     }
     stages {
         stage('Hello') {
