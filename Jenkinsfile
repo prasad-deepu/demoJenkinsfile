@@ -46,7 +46,7 @@ def curlmethod(String url, String JFROG_ID,String bn ) {
 }
 def curlmethodnew(String Path, String JFROG_ID ) {
 
-String resp = sh(script: "curl -u $JFROG_ID -s $Path | jq -r '.children[].uri' | sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' | sort -V | tail -1", returnStdout: true).trim()
+String resp = sh(script: "curl -u $JFROG_ID -s $Path | grep uri | sed 's+\"++g' | sed 's+/++g' | sed 's+,++g' | sort -V | tail -1", returnStdout: true).trim()
 
 return resp
  
