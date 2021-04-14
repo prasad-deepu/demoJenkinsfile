@@ -10,8 +10,10 @@ environment {
    image_name = curlmethodnew(Path, JFROG_ID)
       }
      parameters {
-        string( defaultValue: "",name: 'buildnum'),
-         string(name: 'SERVICE_NAME'),
+         string( defaultValue: "",name: 'buildnum')}
+    parameters {
+        string (name: 'SERVICE_NAME') }
+    parameters {
          string(name: 'RELEASE_LABEL' )
          
         //string( name: 'SERVICE_NAME'), string( name: 'RELEASE_LABEL')
