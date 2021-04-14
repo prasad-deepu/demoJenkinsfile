@@ -10,8 +10,9 @@ environment {
    image_name = curlmethodnew(Path, JFROG_ID)
       }
      parameters {
-        string( defaultValue: "",name: 'buildnum'),
-            string( name: 'SERVICE_NAME'), string( name: 'RELEASE_LABEL')
+        string( defaultValue: "",name: 'buildnum')
+         
+        string( name: 'SERVICE_NAME'), string( name: 'RELEASE_LABEL')
     }
     stages {
         stage('Hello') {
