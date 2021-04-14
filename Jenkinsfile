@@ -11,13 +11,7 @@ environment {
       }
      parameters {
          string( defaultValue: "",name: 'buildnum')}
-    parameters {
-        string (name: 'SERVICE_NAME') }
-    parameters {
-         string(name: 'RELEASE_LABEL' )
-         
-        //string( name: 'SERVICE_NAME'), string( name: 'RELEASE_LABEL')
-    }
+ 
     stages {
         stage('Hello') {
             steps {
