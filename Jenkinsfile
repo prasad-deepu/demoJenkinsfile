@@ -10,7 +10,8 @@ environment {
    image_name = curlmethodnew(Path, JFROG_ID)
       }
      parameters {
-        string( defaultValue: "",name: 'buildnum')
+        string( defaultValue: "",name: 'buildnum'),
+            string( name: 'SERVICE_NAME'), string( name: 'RELEASE_LABEL')
     }
     stages {
         stage('Hello') {
@@ -25,7 +26,7 @@ environment {
 
                    
 
-                  print("the folder path is:"+' '+folder_path+" and image is: "+image_name)
+                  print("the folder path is:"+' '+SERVICE_NAME+" and image is: "+RELEASE_LABEL)
                    //print(Path)
                 }
             }
