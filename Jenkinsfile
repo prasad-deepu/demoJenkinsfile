@@ -5,13 +5,13 @@ environment {
         JFROG_ID = credentials('jfrogid')
        //bn = "${BUILD_NUMBER}"
     url = "https://jfrgfreetst.jfrog.io/artifactory/api/storage/example-repo-local"
-    folder_path = curlmethod(url,JFROG_ID,buildnum)
-    Path = "${url}/${folder_path}/?sort"
-   image_name = curlmethodnew(Path, JFROG_ID)
+    //folder_path = curlmethod(url,JFROG_ID,buildnum)
+    //Path = "${url}/${folder_path}/?sort"
+   //image_name = curlmethodnew(Path, JFROG_ID)
       }
-     parameters {
-         string( defaultValue: "",name: 'buildnum')
-             }
+     //parameters {
+       //  string( defaultValue: "",name: 'buildnum')
+         //    }
  
     stages {
         stage('Hello') {
