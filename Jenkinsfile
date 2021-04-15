@@ -26,7 +26,7 @@ environment {
 
                    
 
-                  print("the folder path is:"+' '+SERVICE_NAME+" and image is: " )
+                  print("the folder path is:"+' '+SERVICE_NAME+" and image is: "+RELEASE_LABEL )
                    //print(Path)
                 }
             }
